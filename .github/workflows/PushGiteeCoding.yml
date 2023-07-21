@@ -29,7 +29,7 @@ jobs:
           git config user.name "fengzhao"
           git config user.email "fengzhao@users.noreply.github.com"
           git remote add  gitlab "https://oauth2:${gitlab_token}@gitlab.com/chinafengzhao/WebStack-Hugo.git"
-          git push --all --force gitlab  master
+          git push --all --force gitlab 
 #           #echo "stop!"
 #           remote_repo="https://gitlab.com/chinafengzhao/WebStack-Hugo.git"
 #           git remote add gitlab "${remote_repo}"
