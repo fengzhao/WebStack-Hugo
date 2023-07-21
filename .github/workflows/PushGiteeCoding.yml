@@ -38,9 +38,9 @@ jobs:
         run: |       
           echo Starting to push repo to gitlab
           git config user.name "fengzhao"
+          git config user.email "fengzhao@users.noreply.github.com"
           echo "${GITLAB_TOKEN}"
           echo "${GITLAB_REPOSITORY}"
-          git config user.email "fengzhao@users.noreply.github.com"
           git remote add  gitlab "https://oauth2:${GITLAB_TOKEN}@gitlab.com/chinafengzhao/WebStack-Hugo.git"
           git push --all --force gitlab 
         env:
