@@ -4,10 +4,20 @@ on:
   push:
     branches: [main]
 
+env:
+  DAY_OF_WEEK: Monday
 jobs:
   push-to-mirror:
     runs-on: ubuntu-latest
-    steps:
+    env:
+      Greeting: Hello
+    steps:   
+      - name: "Say Hello Mona it's Monday"
+        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        env:
+          First_Name: Mona
+          
+          
       - name: Clone
         run: |
           git config --global init.defaultBranch main
@@ -32,14 +42,6 @@ jobs:
           git config user.email "fengzhao@users.noreply.github.com"
           git remote add  gitlab "https://oauth2:${GITLAB_TOKEN}@gitlab.com/chinafengzhao/WebStack-Hugo.git"
           git push --all --force gitlab 
-#           #echo "stop!"
-#           remote_repo="https://gitlab.com/chinafengzhao/WebStack-Hugo.git"
-#           git remote add gitlab "${remote_repo}"
-#           git show-ref # useful for debugging
-#           git branch --verbose
-#           # publish all
-#           git push --all --force gitlab
-#           git push --tags --force gitlab
         env:
           GITLAB_REPOSITORY: chinafengzhao/WebStack-Hugo
           GITLAB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
