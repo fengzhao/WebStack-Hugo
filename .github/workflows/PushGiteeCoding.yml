@@ -22,32 +22,55 @@ jobs:
           GITHUB_USERNAME: ${{ secrets.GH_USERNAME }}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           
-      - name: Push to Coding
-        run: |
-          echo "stop!"
-          #remote_repo="https://${CODING_USERNAME}:${CODING_PASSWORD}@e.coding.net/${CODING_REPOSITORY}.git"
-          #git remote add coding "${remote_repo}"
-          #git show-ref # useful for debugging
-          #git branch --verbose
-          # publish all
-          #git push --all --force coding
-          #git push --tags --force coding
+      - name: Push to gitlab
+      
+        run: |       
+          echo Starting to push repo to gitlab
+          git config user.name "fengzhao"
+          git config user.email "fengzhao@users.noreply.github.com"
+          git remote set-url gitlab "https://oauth2:${gitlab_token}@gitlab.com/chinafengzhao/WebStack-Hugo.git"
+          git push --all --force gitlab  master
+#           #echo "stop!"
+#           remote_repo="https://gitlab.com/chinafengzhao/WebStack-Hugo.git"
+#           git remote add gitlab "${remote_repo}"
+#           git show-ref # useful for debugging
+#           git branch --verbose
+#           # publish all
+#           git push --all --force gitlab
+#           git push --tags --force gitlab
         env:
-          CODING_REPOSITORY: shumlab/webstack/WebStack-Hugo
-          #CODING_USERNAME: ${{ secrets.CODING_USERNAME }}
-          #CODING_PASSWORD: ${{ secrets.CODING_PASSWORD }}
+          GITLAB_REPOSITORY: chinafengzhao/WebStack-Hugo
+          GITLAB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
+#           GITEE_USERNAME: ${{ secrets.GITEE_USERNAME }}
+#           GITEE_PASSWORD: ${{ secrets.GITEE_PASSWORD }}
+
           
-      - name: Push to Gitee
-        run: |
-          #echo "stop!"
-          remote_repo="https://${GITEE_USERNAME}:${GITEE_PASSWORD}@gitee.com/${GITEE_REPOSITORY}.git"
-          git remote add gitee "${remote_repo}"
-          git show-ref # useful for debugging
-          git branch --verbose
-          # publish all
-          git push --all --force gitee
-          git push --tags --force gitee
-        env:
-          GITEE_REPOSITORY: shenweiyan/WebStack-Hugo
-          GITEE_USERNAME: ${{ secrets.GITEE_USERNAME }}
-          GITEE_PASSWORD: ${{ secrets.GITEE_PASSWORD }}
+#       - name: Push to Coding
+#         run: |
+#           echo "stop!"
+#           #remote_repo="https://${CODING_USERNAME}:${CODING_PASSWORD}@e.coding.net/${CODING_REPOSITORY}.git"
+#           #git remote add coding "${remote_repo}"
+#           #git show-ref # useful for debugging
+#           #git branch --verbose
+#           # publish all
+#           #git push --all --force coding
+#           #git push --tags --force coding
+#         env:
+#           CODING_REPOSITORY: shumlab/webstack/WebStack-Hugo
+#           #CODING_USERNAME: ${{ secrets.CODING_USERNAME }}
+#           #CODING_PASSWORD: ${{ secrets.CODING_PASSWORD }}
+          
+#       - name: Push to Gitee
+#         run: |
+#           #echo "stop!"
+#           remote_repo="https://${GITEE_USERNAME}:${GITEE_PASSWORD}@gitee.com/${GITEE_REPOSITORY}.git"
+#           git remote add gitee "${remote_repo}"
+#           git show-ref # useful for debugging
+#           git branch --verbose
+#           # publish all
+#           git push --all --force gitee
+#           git push --tags --force gitee
+#         env:
+#           GITEE_REPOSITORY: shenweiyan/WebStack-Hugo
+#           GITEE_USERNAME: ${{ secrets.GITEE_USERNAME }}
+#           GITEE_PASSWORD: ${{ secrets.GITEE_PASSWORD }}
