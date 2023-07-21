@@ -1,4 +1,4 @@
-name: Sync-Gitee-Coding
+name: Sync-Gitlab-Gitee-Coding
 
 on:
   push:
