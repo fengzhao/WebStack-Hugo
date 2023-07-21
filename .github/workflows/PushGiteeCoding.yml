@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
 
+# 全局变量
 env:
   DAY_OF_WEEK: Monday
 jobs:
