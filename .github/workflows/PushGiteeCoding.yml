@@ -28,7 +28,7 @@ jobs:
           echo Starting to push repo to gitlab
           git config user.name "fengzhao"
           git config user.email "fengzhao@users.noreply.github.com"
-          git remote set-url gitlab "https://oauth2:${gitlab_token}@gitlab.com/chinafengzhao/WebStack-Hugo.git"
+          git remote add  gitlab "https://oauth2:${gitlab_token}@gitlab.com/chinafengzhao/WebStack-Hugo.git"
           git push --all --force gitlab  master
 #           #echo "stop!"
 #           remote_repo="https://gitlab.com/chinafengzhao/WebStack-Hugo.git"
